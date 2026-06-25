@@ -29,6 +29,9 @@
 
 .main{
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .cabeçalho-link{
@@ -45,4 +48,30 @@
     background-color: #ec56009d;
     padding: 15px 25px;
     color: #fff;
+}
+
+.cartão-interno{
+   position: relative;
+   transition: transform 0.8s;
+   transform-style:preserve-3d ;
+}
+
+.cartão:hover, .cartão-verso{
+    transform: rotateY(180deg);
+}
+
+.cartão-frente,.cartão-verso{
+    position: absolute;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    backface-visibility: hidden;
+}
+
+.cartão-verso{
+    transform: rotateY(180deg);
+}
+
+.section{
+    display: flex;
+    gap: 16px;
 }

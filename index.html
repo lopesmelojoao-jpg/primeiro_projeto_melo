@@ -1,49 +1,207 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" />
-    <title>Doenças oculares</title>
+  <meta charset="UTF-8">
+  <title>Flashcards Interativos de Acessibilidade</title>
+  <style>
+    :root {
+      --bg-color: #005753;
+      --card-front-bg: #111827;
+      --card-back-bg: #00124424;
+      --border-color: #00c64c;
+      --text-main: #ffffff;
+      --text-muted: #373839;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: system-ui, -apple-system, sans-serif;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+    }
+
+    h2 {
+      text-align: center;
+      color: var(--border-color);
+    }
+
+    /* Estrutura do Flashcard Interativo */
+    .flashcard {
+      background-color: transparent;
+      width: 100%;
+      height: 250px;
+      perspective: 1000px; /* Cria o efeito 3D */
+      margin-bottom: 30px;
+      cursor: pointer;
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    /* Gira o card ao passar o mouse ou focar */
+    .flashcard:hover .card-inner, 
+    .flashcard:focus-within .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden; /* Esconde o verso enquanto vira */
+      backface-visibility: hidden;
+      border: 2px solid var(--border-color);
+      border-radius: 12px;
+      box-sizing: border-box;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Face da Frente */
+    .card-front {
+      background-color: var(--card-front-bg);
+      color: var(--text-main);
+    }
+
+    .card-front h3 {
+      color: var(--border-color);
+      margin: 0 0 10px 0;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+
+    .card-front p {
+      font-size: 1.2rem;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Face do Verso */
+    .card-back {
+      background-color: var(--card-back-bg);
+      color: var(--text-main);
+      transform: rotateY(180deg);
+      align-items: flex-start;
+      text-align: left;
+      overflow-y: auto;
+    }
+
+    .card-back ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .card-back li {
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .card-back li strong {
+      color: var(--border-color);
+    }
+
+    .hint {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: -15px;
+      margin-bottom: 25px;
+    }
+  </style>
 </head>
 <body>
-   <header class="cabeçalho">
-    <h1>Doenças do olho</h1>
-    <nav> 
-    <a href="#" class="cabeçalho-link">Inicio</a>
-    </nav>
-   </header>
-  <main>
-    <h2>Descubra sobre passando o mouse</h2>
-   <section>
-     <article class="cartão">
-        <div class="cartão-interno">
-            <div class="cartão-frente">
-             <img src="https://thumbs.dreamstime.com/b/olho-doente-com-conjuntivite-15540728.jpg?w=992" alt="olho com conjutivite" class="cartão-imagem">
-              <p>A conjuntivite é a inflamação da conjuntiva, membrana transparente que reveste a parte branca dos olhos e o interior das pálpebras. Os sintomas mais comuns incluem olhos vermelhos, coceira, sensação de areia e secreção. Pode ser causada por vírus, bactérias, alergias ou agentes irritantes químicos.</p>
-            </div>
-            <div class="cartão-verso">
-                <img src="https://oftalmoday.com.br/wp-content/uploads/2019/05/batch_2018_drauzio_catarata-olho_48967279_arztsamui_outubro_1000x563.jpg" alt="olho com catarata" class="cartão-imagem">
-                <P>A catarata é o embaçamento do cristalino, a lente natural dos olhos. Essa opacificação bloqueia a entrada de luz, causando visão embaçada, cores desbotadas e ofuscamento. É uma condição progressiva e a principal causa de perda de visão no mundo, tratada exclusivamente por meio de cirurgia.</P>
-            </div>
-        </div>
-     </article>
-   <div class="cartão-interno">
-            <div class="cartão-frente">
-             <img src="https://thumbs.dreamstime.com/b/olho-doente-com-conjuntivite-15540728.jpg?w=992" alt="olho com conjutivite" class="cartão-imagem">
-              <p>A conjuntivite é a inflamação da conjuntiva, membrana transparente que reveste a parte branca dos olhos e o interior das pálpebras. Os sintomas mais comuns incluem olhos vermelhos, coceira, sensação de areia e secreção. Pode ser causada por vírus, bactérias, alergias ou agentes irritantes químicos.</p>
-            </div>
-            <div class="cartão-verso">
-                <img src="https://oftalmoday.com.br/wp-content/uploads/2019/05/batch_2018_drauzio_catarata-olho_48967279_arztsamui_outubro_1000x563.jpg" alt="olho com catarata" class="cartão-imagem">
-                <P>A catarata é o embaçamento do cristalino, a lente natural dos olhos. Essa opacificação bloqueia a entrada de luz, causando visão embaçada, cores desbotadas e ofuscamento. É uma condição progressiva e a principal causa de perda de visão no mundo, tratada exclusivamente por meio de cirurgia.</P>
-            </div>
-        </div>
-     </article>
 
-    </section>
-  </main>
-  <footer>
-    <p>Projeto feito por Paraiba</p>
-  </footer>
+  <div class="container">
+    <h2>🗂️ Flashcards sobre Doenças Visuais e Acessibilidade</h2>
+    <p class="hint">💡 Passe o mouse ou toque no card para ver a resposta</p>
+
+    <!-- CARD 1: DALTONISMO -->
+    <div class="flashcard" tabindex="0">
+      <div class="card-inner">
+        <div class="card-front">
+          <h3>👁️ CARD 1: DALTONISMO</h3>
+          <p>O que é o <b>Daltonismo</b> e qual o principal cuidado que um desenvolvedor deve ter na web?</p>
+        </div>
+        <div class="card-back">
+          <ul>
+            <li><strong>Definição:</strong> Incapacidade ou dificuldade de distinguir certas cores, afetando principalmente tons como verde e vermelho.</li>
+            <li><strong>Regra de Ouro:</strong> Nunca transmita informações importantes <b>apenas por meio de cores</b>. Se um campo falhar, use texto explícito e ícones.</li>
+            <li><strong>Contraste:</strong> Certifique-se de que a diferença de luminosidade entre texto e fundo siga as diretrizes WCAG.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 2: GLAUCOMA -->
+    <div class="flashcard" tabindex="0">
+      <div class="card-inner">
+        <div class="card-front">
+          <h3>👁️ CARD 2: BAIXA VISÃO / GLAUCOMA</h3>
+          <p>Como condições como o <b>Glaucoma</b> afetam a navegação e qual recurso técnico resolve essa barreira?</p>
+        </div>
+        <div class="card-back">
+          <ul>
+            <li><strong>Definição:</strong> O glaucoma causa perda progressiva do campo visual periférico (visão de túnel) e redução de contraste.</li>
+            <li><strong>Navegação:</strong> Usuários com essa condição dependem criticamente do <b>zoom do navegador</b> ou de lupas virtuais.</li>
+            <li><strong>Solução Técnica:</strong> Use unidades relativas no CSS (como <code>rem</code> ou <code>em</code>). O layout não pode quebrar com zoom de até 200%.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 3: CEGUEIRA TOTAL -->
+    <div class="flashcard" tabindex="0">
+      <div class="card-inner">
+        <div class="card-front">
+          <h3>👁️ CARD 3: CEGUEIRA TOTAL</h3>
+          <p>Como uma pessoa com <b>Cegueira Total</b> consome conteúdo web e quais os pilares básicos de acesso?</p>
+        </div>
+        <div class="card-back">
+          <ul>
+            <li><strong>Navegação:</strong> Utilizam <b>Leitores de Tela</b> (como NVDA ou VoiceOver), que transformam o texto digital em áudio ou Braille.</li>
+            <li><strong>Imagens:</strong> Toda imagem funcional deve conter o atributo <code>alt</code> preenchido com uma descrição clara.</li>
+            <li><strong>Teclado:</strong> O site precisa ser 100% navegável usando apenas a tecla <code>Tab</code> e setas, sem depender do mouse.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 4: ASTIGMATISMO -->
+    <div class="flashcard" tabindex="0">
+      <div class="card-inner">
+        <div class="card-front">
+          <h3>👁️ CARD 4: ASTIGMATISMO</h3>
+          <p>O que o <b>Astigmatismo</b> causa na leitura digital e como a tipografia pode mitigar isso?</p>
+        </div>
+        <div class="card-back">
+          <ul>
+            <li><strong>Definição:</strong> Imperfeição na curvatura da córnea que distorce a luz, gerando visão borrada e halos ao redor das letras em telas.</li>
+            <li><strong>Tipografia:</strong> Evite fontes com serifa muito finas ou compactas. Prefira fontes <b>sans-serif</b> limpas (Arial, Roboto).</li>
+            <li><strong>Espaçamento:</strong> Mantenha boa altura de linha (<code>line-height: 1.5</code>) para evitar o efeito de borramento visual.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
 </body>
 </html>

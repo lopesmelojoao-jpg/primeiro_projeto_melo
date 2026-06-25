@@ -1,8 +1,17 @@
-{
- margin: 0;
- padding:0;
+* {
+  margin:0;
+  padding:0;
 }
 
 .cabeçalho{
     padding: 15px 25px;
+}
+
+.cartão{
+    width: 260px;
+    height: 200px;
+}
+
+.cartão-frente,.cartão-verso{
+    width: 100%;
 }
